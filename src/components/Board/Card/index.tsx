@@ -26,9 +26,9 @@ const MCard = (props: Props) => {
     return (
         <div
             onClick={onCard}
-            className={`card m-3 p-4 ${color}`}>
+            className={`card m-1 px-1 py-5 ${color}`}>
             <i
-                className={`fa fa-${icon} fa-5x`}
+                className={`fa fa-${icon} fa-2x`}
                 aria-hidden="true"
             />
         </div>

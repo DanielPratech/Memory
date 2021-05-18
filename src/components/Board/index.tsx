@@ -134,7 +134,7 @@ export default class Board extends React.Component<Props, State>{
 
                             cardArray.map(
                                 (cardItem: Card, index: number) =>
-                                    <div key={index + 1} className="col-2">
+                                    <div key={index + 1} className="col-3">
                                         <MCard
                                             card={cardItem}
                                             onCard={() => this.handleCard(cardItem)}
