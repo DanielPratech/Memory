@@ -1,0 +1,150 @@
+{
+    "Cards": [
+
+        {
+            "Id": 9,
+            "Icon": "venus-mars",
+            "Status": 1
+        },
+        {
+            "Id": 10,
+            "Icon": "venus-mars",
+            "Status": 1
+        },
+        {
+            "Id": 11,
+            "Icon": "venus-double",
+            "Status": 1
+        },
+        {
+            "Id": 12,
+            "Icon": "venus-double",
+            "Status": 1
+        },
+        {
+            "Id": 13,
+            "Icon": "venus",
+            "Status": 1
+        },
+        {
+            "Id": 14,
+            "Icon": "venus",
+            "Status": 1
+        },
+        {
+            "Id": 15,
+            "Icon": "transgender-alt",
+            "Status": 1
+        },
+        {
+            "Id": 16,
+            "Icon": "transgender-alt",
+            "Status": 1
+        },
+        {
+            "Id": 17,
+            "Icon": "transgender",
+            "Status": 1
+        },
+        {
+            "Id": 18,
+            "Icon": "transgender",
+            "Status": 1
+        } ,
+
+
+
+        {
+            "Id": 19,
+            "Icon": "genderless",
+            "Status": 1
+        } ,
+        {
+            "Id": 20,
+            "Icon": "genderless",
+            "Status": 1
+        } ,
+      
+        {
+            "Id": 23,
+            "Icon": "mars",
+            "Status": 1
+        } ,
+        {
+            "Id": 24,
+            "Icon": "mars",
+            "Status": 1
+        } ,
+        {
+            "Id": 25,
+            "Icon": "mars-double",
+            "Status": 1
+        } ,
+        {
+            "Id": 26,
+            "Icon": "mars-double",
+            "Status": 1
+        } ,
+        {
+            "Id": 27,
+            "Icon": "mars-stroke-h",
+            "Status": 1
+        } ,
+        {
+            "Id": 28,
+            "Icon": "mars-stroke-h",
+            "Status": 1
+        } ,
+        {
+            "Id": 29,
+            "Icon": "mars-stroke-v",
+            "Status": 1
+        } ,
+        {
+            "Id": 30,
+            "Icon": "mars-stroke-v",
+            "Status": 1
+        } ,
+        {
+            "Id": 31,
+            "Icon": "mercury",
+            "Status": 1
+        } ,
+        {
+            "Id": 32,
+            "Icon": "mercury",
+            "Status": 1
+        } ,
+        {
+            "Id": 33,
+            "Icon": "neuter",
+            "Status": 1
+        } ,
+        {
+            "Id": 34,
+            "Icon": "neuter",
+            "Status": 1
+        } ,
+        {
+            "Id": -1,
+            "Icon": "thumbs-down",
+            "Status": 1
+        },
+        {
+            "Id": -2,
+            "Icon": "thumbs-down",
+            "Status": 1
+        },
+        {
+            "Id": -3,
+            "Icon": "thumbs-down",
+            "Status": 1
+        },
+        {
+            "Id": -4,
+            "Icon": "thumbs-down",
+            "Status": 1
+        }      
+        
+    ]
+}

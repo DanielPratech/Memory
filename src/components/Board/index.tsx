@@ -1,13 +1,14 @@
 import * as React from 'react';
 import MCard from './Card';
 import StatusBar from './StatusBar/index';
-import data from './Card/Cards.json';
 import Card from './Card/Card';
 import { CardStatus } from './Card/CardStatus';
 import { updateCardArray } from './Card/CardUtils';
+import ILevel from '../Levels/ILevel';
 
 type Props = {
     onHome: () => void;
+    level: ILevel;
 };
 type State = {
     tries: number;
@@ -31,10 +32,25 @@ export default class Board extends React.Component<Props, State>{
 
     public componentDidMount() {
         this.setState({
-            cardArray: JSON.parse(JSON.stringify(data.Cards.sort(
-                () => Math.random() - 0.5
-            )))
+            cardArray: JSON.parse(
+                JSON.stringify(
+                    this.props.level.cards.sort(
+                        () => Math.random() - 0.5
+                    )))
         });
+    }
+
+    public componentDidUpdate(prevProps: Props) {
+        const { level } = this.props;
+        if (prevProps.level !== level) {
+            this.setState({
+                cardArray: JSON.parse(
+                    JSON.stringify(
+                        this.props.level.cards.sort(
+                            () => Math.random() - 0.5
+                        )))
+            });
+        }
     }
 
     public handleReset(isTrap?: boolean) {
@@ -43,9 +59,11 @@ export default class Board extends React.Component<Props, State>{
             tries: isTrap ? tries : 0,
             cardArray: isTrap
                 ? cardArray.sort(() => Math.random() - 0.5)
-                : JSON.parse(JSON.stringify(data.Cards.sort(
-                    () => Math.random() - 0.5
-                ))),
+                : JSON.parse(
+                    JSON.stringify(
+                        this.props.level.cards.sort(
+                            () => Math.random() - 0.5
+                        ))),
             cardTemp: new Card(),
             loading: false
         });
@@ -60,9 +78,9 @@ export default class Board extends React.Component<Props, State>{
                     cardTemp = cardItem;
                     cardArray = updateCardArray(cardArray, cardItem);
                     this.setState({ cardArray, cardTemp });
-                    if (cardItem.Id == 9999) {
+                    if (cardItem.Id < 0) {
+                        this.setState({loading: true});
                         setTimeout(() => {
-                            //alert("Has caido en una trampa :P");
                             cardItem.Status = CardStatus.reverse;
                             this.setState({ cardArray });
                             this.handleReset(true);
@@ -82,8 +100,7 @@ export default class Board extends React.Component<Props, State>{
                     cardArray = updateCardArray(cardArray, cardItem);
                     this.setState({ cardArray, loading: true });
                     setTimeout(() => {
-                        if (cardItem.Id == 9999) {
-                            //alert("Has caido en una trampa :P");
+                        if (cardItem.Id < 0) {
                             this.handleReset(true);
                         }
                         if (cardTemp.Status !== CardStatus.matched) {
@@ -106,10 +123,14 @@ export default class Board extends React.Component<Props, State>{
         setTimeout(() => {
             const { cardArray, tries } = this.state;
             let aciertos = cardArray.filter(
-                item => item.Id !== 9999
+                item => item.Id <= 0
                     && item.Status === CardStatus.matched
             ).length;
-            if (aciertos == cardArray.length-1) {
+            let traps = cardArray.filter(
+                item => item.Id < 0
+            ).length;
+
+            if (aciertos == cardArray.length - traps) {
                 alert(`Felicidades, ha ganado el juego en ${tries} intentos`);
                 this.handleReset();
             }
@@ -118,6 +139,7 @@ export default class Board extends React.Component<Props, State>{
 
     render() {
         const { tries, cardArray } = this.state;
+        const { level } = this.props;
         return (
             <div>
                 <div className="container">
@@ -127,6 +149,7 @@ export default class Board extends React.Component<Props, State>{
                             this.handleReset();
                             this.props.onHome();
                         }}
+                        level={level}
                         onReset={this.handleReset.bind(this)}
                     />
                     <div className='row'>

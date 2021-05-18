@@ -1,0 +1,44 @@
+{
+    "Cards": [
+        {
+            "Id": 1,
+            "Icon": "user",
+            "Status": 1
+        },
+        {
+            "Id": 2,
+            "Icon": "handshake-o",
+            "Status": 1
+        },
+        {
+            "Id": 3,
+            "Icon": "thermometer-1",
+            "Status": 1
+        },
+        {
+            "Id": 4,
+            "Icon": "thermometer-1",
+            "Status": 1
+        },
+        {
+            "Id": 5,
+            "Icon": "handshake-o",
+            "Status": 1
+        },
+        {
+            "Id": 6,
+            "Icon": "user",
+            "Status": 1
+        },
+        {
+            "Id": 7,
+            "Icon": "hard-of-hearing (alias)",
+            "Status": 1
+        },
+        {
+            "Id": 8,
+            "Icon": "hard-of-hearing (alias)",
+            "Status": 1
+        }
+    ]
+}

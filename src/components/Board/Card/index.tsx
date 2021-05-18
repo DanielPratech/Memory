@@ -16,13 +16,12 @@ const MCard = (props: Props) => {
             icon = "times";
             break;
         case CardStatus.uncovered:
-            color = card.Id === 9999 ? 'alert-danger' : 'alert-warning';
+            color = card.Id < 0 ? 'alert-danger' : 'alert-warning';
             break;
         case CardStatus.matched:
             color = 'alert-success';
             break;
     }
-    //color = card.Id === 9999 ? 'alert-danger' : color;
     return (
         <div
             onClick={onCard}

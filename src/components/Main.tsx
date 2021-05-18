@@ -2,33 +2,40 @@ import * as React from 'react';
 import { Screen } from './screen';
 import Board from './Board/index';
 import MButton from './MButton';
+import { Level } from './Levels/Level';
+import Levels from './Levels';
+import ILevel from './Levels/ILevel';
+import { getJSONByLevel } from './Levels/LevelUtils';
 
 type Props = {
 
 };
 type State = {
     screen: number;
+    level: ILevel;
 };
 
 export default class Main extends React.Component<Props, State>{
     constructor(props: Props) {
         super(props);
         this.state = {
-            screen: Screen.main
+            screen: Screen.main,
+            level: {
+                level: Level.normal,
+                cards: getJSONByLevel(Level.normal)
+            },
         }
-
         this.changeScreen = this.changeScreen.bind(this);
+        this.handleSelectLevel = this.handleSelectLevel.bind(this);
     }
 
     private switchView() {
-        const { screen } = this.state;
+        const { screen, level } = this.state;
         switch (screen) {
             case Screen.main:
                 return (this.getMainView());
-            case Screen.configs:
-                return (this.getMainView());
             case Screen.board:
-                return <Board onHome={() => this.changeScreen(Screen.main)} />;
+                return <Board level={level} onHome={() => this.changeScreen(Screen.main)} />;
         }
     }
 
@@ -36,13 +43,19 @@ export default class Main extends React.Component<Props, State>{
         return (
             <div className='btn-group-vertical'>
                 <MButton text='Comenzar' mclick={() => this.changeScreen(Screen.board)} />
-                <MButton text='Configuraciones' mclick={() => this.changeScreen(Screen.configs)} />
+                <Levels
+                    onSelectLevel={this.handleSelectLevel}
+                />
             </div>
         );
     }
 
     private changeScreen(screen: number) {
         this.setState({ screen });
+    }
+
+    private handleSelectLevel(level: ILevel) {
+        this.setState({ level });
     }
 
     render() {
