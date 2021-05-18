@@ -2,6 +2,7 @@ import * as React from 'react';
 import MButton from '../../MButton';
 import ILevel from '../../Levels/ILevel';
 import { getLevelName } from '../../Levels/LevelUtils';
+import MBLabel from '../../MLabel/index';
 
 type Props = {
     tries: number;
@@ -25,10 +26,10 @@ const StatusBar = (props: Props) => {
                     mclick={() =>
                         window.confirm("¿Desea reiniciar la partida?") && onReset()
                     } />
-                <MButton
+                <MBLabel
                     text={`Intentos: ${tries}`} />
 
-                <MButton
+                <MBLabel
                     text={`Nivel: ${getLevelName(level.level)}`} />
             </div>
         </div>

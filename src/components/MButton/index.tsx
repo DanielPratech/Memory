@@ -9,7 +9,7 @@ const MButton = (props: Props) => {
     const { mclick, text } = props;
     return (
         <button
-            onClick={() => { mclick ? mclick() : console.log('') }}
+            onClick={() => mclick && mclick()}
             disabled={mclick ? false : true}
             className='btn btn-sm btn-outline-dark mb-3 me-3 rounded'>
             {text}

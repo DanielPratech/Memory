@@ -123,7 +123,7 @@ export default class Board extends React.Component<Props, State>{
         setTimeout(() => {
             const { cardArray, tries } = this.state;
             let aciertos = cardArray.filter(
-                item => item.Id <= 0
+                item => item.Id >= 0
                     && item.Status === CardStatus.matched
             ).length;
             let traps = cardArray.filter(

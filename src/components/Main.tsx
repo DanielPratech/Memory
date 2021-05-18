@@ -10,6 +10,7 @@ import { getJSONByLevel } from './Levels/LevelUtils';
 type Props = {
 
 };
+
 type State = {
     screen: number;
     level: ILevel;
@@ -35,7 +36,17 @@ export default class Main extends React.Component<Props, State>{
             case Screen.main:
                 return (this.getMainView());
             case Screen.board:
-                return <Board level={level} onHome={() => this.changeScreen(Screen.main)} />;
+                return <Board level={level} onHome={
+                    () => {
+                        this.changeScreen(Screen.main);
+                        this.setState({
+                            level: {
+                                level: Level.normal,
+                                cards: getJSONByLevel(Level.normal)
+                            }
+                        });
+                    }
+                } />;
         }
     }
 
