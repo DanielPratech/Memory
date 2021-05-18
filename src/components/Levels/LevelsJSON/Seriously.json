@@ -92,7 +92,7 @@
             "Status": 1
         } ,
         {
-            "Id": 9999,
+            "Id": -1,
             "Icon": "thumbs-down",
             "Status": 1
         }      
