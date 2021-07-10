@@ -79,7 +79,7 @@ export default class Board extends React.Component<Props, State>{
                     cardArray = updateCardArray(cardArray, cardItem);
                     this.setState({ cardArray, cardTemp });
                     if (cardItem.Id < 0) {
-                        this.setState({loading: true});
+                        this.setState({ loading: true });
                         setTimeout(() => {
                             cardItem.Status = CardStatus.reverse;
                             this.setState({ cardArray });
@@ -130,7 +130,7 @@ export default class Board extends React.Component<Props, State>{
                 item => item.Id < 0
             ).length;
 
-            if (aciertos == cardArray.length - traps) {
+            if (aciertos === cardArray.length - traps) {
                 alert(`Felicidades, ha ganado el juego en ${tries} intentos`);
                 this.handleReset();
             }

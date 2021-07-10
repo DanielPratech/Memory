@@ -5,32 +5,24 @@ import normal from './LevelsJSON/normal.json';
 import seriously from './LevelsJSON/Seriously.json';
 import imposible from './LevelsJSON/imposible.json';
 
+export const switchLevelCard = {
+    [Level.baby.toString()]: baby.Cards,
+    [Level.normal.toString()]: normal.Cards,
+    [Level.seriously.toString()]: seriously.Cards,
+    [Level.imposible.toString()]: imposible.Cards
+};
+
+export const switchLevelName = {
+    [Level.baby.toString()]: "Baby",
+    [Level.normal.toString()]: "Normal",
+    [Level.seriously.toString()]: "Seriously",
+    [Level.imposible.toString()]: "Imposible"
+};
+
 export const getJSONByLevel = (level: number): Array<Card> => {
-    switch (level) {
-        case Level.baby:
-            return baby.Cards;
-        case Level.normal:
-            return normal.Cards;
-        case Level.seriously:
-            return seriously.Cards;
-        case Level.imposible:
-            return imposible.Cards;
-        default:
-            return [];
-    }
+    return switchLevelCard[level.toString()];
 };
 
 export const getLevelName = (level: number): string => {
-    switch (level) {
-        case Level.baby:
-            return "Baby"
-        case Level.normal:
-            return "Normal"
-        case Level.seriously:
-            return "Seriously?"
-        case Level.imposible:
-            return "Imposible"
-        default:
-            return "";
-    }
+    return switchLevelName[level.toString()];
 };
