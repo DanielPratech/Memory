@@ -1,4 +1,4 @@
-import { CardStatus } from './CardStatus';
+import { CardStatus } from './enums/CardStatus';
 export default class Card {
     constructor(
         public Id: number = 0,

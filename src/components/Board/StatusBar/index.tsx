@@ -5,6 +5,7 @@ import { getLevelName } from '../../Levels/LevelUtils';
 import MBLabel from '../../MLabel/index';
 
 type Props = {
+    loading: boolean;
     tries: number;
     onHome: () => void;
     onReset: () => void;
@@ -12,16 +13,18 @@ type Props = {
 };
 
 const StatusBar = (props: Props) => {
-    const { onHome, tries, onReset, level } = props;
+    const { onHome, tries, onReset, level, loading } = props;
     return (
         <div className='text-start'>
             <div className='btn-group'>
                 <MButton
+                    disabled = {loading}
                     text='Regresar'
                     mclick={() =>
                         window.confirm("¿Desea salir de la partida?") && onHome()
                     } />
                 <MButton
+                    disabled = {loading}
                     text='Reiniciar'
                     mclick={() =>
                         window.confirm("¿Desea reiniciar la partida?") && onReset()

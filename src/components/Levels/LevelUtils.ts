@@ -1,5 +1,5 @@
 import Card from '../Board/Card/Card';
-import { Level } from './Level';
+import { Level } from './enums/Level';
 import baby from './LevelsJSON/baby.json';
 import normal from './LevelsJSON/normal.json';
 import seriously from './LevelsJSON/Seriously.json';

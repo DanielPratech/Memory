@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Card from './Card';
-import { CardStatus } from './CardStatus';
+import { CardStatus } from './enums/CardStatus';
 
 type Props = {
     onCard: () => void;

@@ -1,16 +1,17 @@
 import * as React from 'react';
 
 type Props = {
-    mclick?: () => void;
+    mclick: () => void;
     text: string;
+    disabled?: boolean;
 };
 
 const MButton = (props: Props) => {
-    const { mclick, text } = props;
+    const { mclick, text, disabled } = props;
     return (
         <button
-            onClick={() => mclick && mclick()}
-            disabled={mclick ? false : true}
+            disabled={disabled}
+            onClick={mclick}
             className='btn btn-sm btn-outline-dark mb-3 me-3 rounded'>
             {text}
         </button>

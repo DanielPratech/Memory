@@ -1,5 +1,5 @@
 import { getJSONByLevel, getLevelName, switchLevelCard, switchLevelName } from '../LevelUtils';
-import { Level } from '../Level';
+import { Level } from '../enums/Level';
 import Card from '../../Board/Card/Card';
 
 const levelArray = [

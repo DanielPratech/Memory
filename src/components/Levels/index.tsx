@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Level } from './Level';
+import { Level } from './enums/Level';
 import ILevel from './ILevel';
 import { getJSONByLevel, getLevelName } from './LevelUtils';
 import MBLabel from '../MLabel/index';

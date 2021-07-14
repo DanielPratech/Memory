@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Screen } from './screen';
+import { Screen } from './enums/screen';
 import Board from './Board/index';
 import MButton from './MButton';
-import { Level } from './Levels/Level';
+import { Level } from './Levels/enums/Level';
 import Levels from './Levels';
 import ILevel from './Levels/ILevel';
 import { getJSONByLevel } from './Levels/LevelUtils';
@@ -54,7 +54,7 @@ export default class Main extends React.Component<Props, State>{
         return (
             <div className='btn-group-vertical'>
                 <MButton text='Comenzar' mclick={() => this.changeScreen(Screen.board)} />
-                <Levels
+                <Levels 
                     onSelectLevel={this.handleSelectLevel}
                 />
             </div>

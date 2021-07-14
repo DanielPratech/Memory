@@ -2,8 +2,8 @@ import * as React from 'react';
 import MCard from './Card';
 import StatusBar from './StatusBar/index';
 import Card from './Card/Card';
-import { CardStatus } from './Card/CardStatus';
-import { updateCardArray } from './Card/CardUtils';
+import { CardStatus } from './Card/enums/CardStatus';
+import { sortCards, updateCardArray } from './Card/CardUtils';
 import ILevel from '../Levels/ILevel';
 
 type Props = {
@@ -31,12 +31,9 @@ export default class Board extends React.Component<Props, State>{
     }
 
     public componentDidMount() {
+        const { level } = this.props;
         this.setState({
-            cardArray: JSON.parse(
-                JSON.stringify(
-                    this.props.level.cards.sort(
-                        () => Math.random() - 0.5
-                    )))
+            cardArray: sortCards(level.cards)
         });
     }
 
@@ -44,26 +41,19 @@ export default class Board extends React.Component<Props, State>{
         const { level } = this.props;
         if (prevProps.level !== level) {
             this.setState({
-                cardArray: JSON.parse(
-                    JSON.stringify(
-                        this.props.level.cards.sort(
-                            () => Math.random() - 0.5
-                        )))
+                cardArray: sortCards(level.cards)
             });
         }
     }
 
     public handleReset(isTrap?: boolean) {
         const { tries, cardArray } = this.state;
+        const { level } = this.props;
         this.setState({
             tries: isTrap ? tries : 0,
             cardArray: isTrap
-                ? cardArray.sort(() => Math.random() - 0.5)
-                : JSON.parse(
-                    JSON.stringify(
-                        this.props.level.cards.sort(
-                            () => Math.random() - 0.5
-                        ))),
+                ? sortCards(cardArray)
+                : sortCards(level.cards),
             cardTemp: new Card(),
             loading: false
         });
@@ -138,12 +128,13 @@ export default class Board extends React.Component<Props, State>{
     }
 
     render() {
-        const { tries, cardArray } = this.state;
+        const { tries, cardArray, loading } = this.state;
         const { level } = this.props;
         return (
             <div>
                 <div className="container">
                     <StatusBar
+                        loading={loading}
                         tries={tries}
                         onHome={() => {
                             this.handleReset();
